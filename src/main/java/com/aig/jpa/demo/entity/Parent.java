@@ -10,14 +10,16 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter
 @Setter
+@Getter
 public class Parent {
-    @Id
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -25,7 +27,15 @@ public class Parent {
 
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     private List<Child> children = new ArrayList<>();
-
+    
+    @Transient
+    public List<Child> getChildren() {
+		return children;
+	}
+    
+    @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
+    private List<Child2> children2 = new ArrayList<>();
+    
 	public Parent(String name) {
 		super();
 		this.name = name;

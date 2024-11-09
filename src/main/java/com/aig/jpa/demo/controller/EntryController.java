@@ -1,7 +1,9 @@
 package com.aig.jpa.demo.controller;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,17 +16,9 @@ public class EntryController {
 	@Autowired
 	ParentChildService parentChildService;
 
-	@GetMapping("/aig")
-	public Parent getById(@RequestParam(required = true) long id,
-	    @RequestParam(required = true) boolean loadChild) {
-		
-		Parent parent = null;
-		
-		if(loadChild) {
-			parent = parentChildService.getParentWithChild(id);
-		} else {
-			parent = parentChildService.getParent(id);	
-		}
-		return parent;
+	@PostMapping("/aig/parent/")
+	public Parent getParentById(@RequestParam(required = true) long id,
+	    @RequestParam(required = true) Set<String> fetchPolicy) {
+		return parentChildService.getParentById(id,fetchPolicy);
 	}
 }
