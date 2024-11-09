@@ -13,16 +13,17 @@ import com.aig.jpa.demo.repository.ParentRepository;
 
 @Service
 public class ParentChildService {
-	
+
 	@Autowired
 	private ParentRepository parentRepository;
 
 	@Autowired
 	private ChildRepository childRepository;
 
+	@SuppressWarnings("removal")
 	public Parent getParentById(long id, Set<String> fetchPolicy) {
 		Optional<Parent> parent = parentRepository.findById(new Long(id));
-		if(fetchPolicy.contains("children")) {
+		if (fetchPolicy.contains("children")) {
 			parent.get().setChildren(List.of(childRepository.findById(parent.get().getId()).get()));
 		}
 		return parent.get();

@@ -14,15 +14,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Child2 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String name;
+	private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "parent_id")
-    private Parent parent;
+	@ManyToOne
+	@JoinColumn(name = "parent_id")
+	private Parent parent;
 
 	public Child2(String name, Parent parent) {
 		super();

@@ -1,3 +1,7 @@
+/**
+ * RestController having methods for CRUD operation for Parent & Child entities
+ * author Dhiraj Jaju
+ */
 package com.aig.jpa.demo.controller;
 
 import java.util.Set;
@@ -16,9 +20,16 @@ public class EntryController {
 	@Autowired
 	ParentChildService parentChildService;
 
+	/**
+	 * Endpoint to get Parent and child details based on fetchPolicy 
+	 * parameters passed
+	 * @param id
+	 * @param fetchPolicy
+	 * @return
+	 */
 	@PostMapping("/aig/parent/")
 	public Parent getParentById(@RequestParam(required = true) long id,
-	    @RequestParam(required = true) Set<String> fetchPolicy) {
-		return parentChildService.getParentById(id,fetchPolicy);
+			@RequestParam(required = true) Set<String> fetchPolicy) {
+		return parentChildService.getParentById(id, fetchPolicy);
 	}
 }

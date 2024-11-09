@@ -20,22 +20,22 @@ import lombok.Setter;
 public class Parent {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String name;
+	private String name;
 
-    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
-    private List<Child> children = new ArrayList<>();
-    
-    @Transient
-    public List<Child> getChildren() {
+	@OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
+	private List<Child> children = new ArrayList<>();
+
+	@Transient
+	public List<Child> getChildren() {
 		return children;
 	}
-    
-    @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
-    private List<Child2> children2 = new ArrayList<>();
-    
+
+	@OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
+	private List<Child2> children2 = new ArrayList<>();
+
 	public Parent(String name) {
 		super();
 		this.name = name;

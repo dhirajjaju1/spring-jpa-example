@@ -6,7 +6,7 @@ By Default child entity is set to fetch = FetchType.LAZY so that it will get laz
 
 Parent entity is having 2 child entities
 1. Child - marked as fetch = FetchType.LAZY & getter is mention with @Transient
-2. Child2 - marked as fetch = FetchType.EAGER
+2. Child2 - marked as fetch = FetchType.EAGER - This entity is added to show case EAGER loading of entities all the time 
 
 
 If caller pass fetchPolicy attributes then application is loading Child entity eagerly otherwise if will be lazyly loaded
